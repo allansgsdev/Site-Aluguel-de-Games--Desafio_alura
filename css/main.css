@@ -72,6 +72,21 @@
     color: #505EFF;
 }
 
+.newparagraph-title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 250;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.newparagraph-title__emphasis {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 250;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #505EFF;
+}
+
 .dashboard {
     background-color: rgba(255, 255, 255, 0.1);
 
@@ -94,6 +109,11 @@
     justify-content: space-evenly;
 }
 
+.newparagraph__items {
+    display: flex;
+    justify-content: center;
+}
+
 .dashboard__items__item {
     display: flex;
     flex-direction: column;
@@ -104,6 +124,15 @@
 }
 
 .paragraph__items__item {
+    display: block;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.newparagraph__items__item {
     display: block;
     flex-direction: column;
     align-items: stretch;

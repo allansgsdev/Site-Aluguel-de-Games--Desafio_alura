@@ -7,6 +7,7 @@
 
 // DECLARAÇÃO DE VARIÁVEIS
 let lista = [];
+let jogos = [];
 
 // DECLARAÇÃO DE FUNÇÕES
 function exibirNaTela(id, texto) {
@@ -16,18 +17,22 @@ function exibirNaTela(id, texto) {
 
 function formarLista() {
     lista = [];
+    jogos = [];
     for (var i = 1; i <= document.querySelectorAll('a').length; i++) {
         var game = document.getElementById(`game-${i}`);
         var botao = game.querySelector('a');
+        var nomeJogo = game.querySelector('.dashboard__item__name');
+        var nomeBotao = game.querySelector('.dashboard__item__button');
 
-        if (botao.classList.contains('dashboard__item__button--return')) {
+        if (nomeBotao.textContent == 'Devolver') {
             lista.push('Alugado');
+            jogos.push(nomeJogo.textContent);
         } else {
             lista.push('Em estoque');
         }
     }
     console.log(lista);
-    return lista
+    return jogos
 }
 
 function contarAlugados() {
@@ -43,8 +48,8 @@ function contarAlugados() {
 
 function alterarStatus(num) {
     var game = document.getElementById(`game-${num}`);
-    var imagem = game.querySelector('div');
-    var botao = game.querySelector('a');
+    var imagem = game.querySelector('.dashboard__item__img');
+    var botao = game.querySelector('.dashboard__item__button');
 
     if (botao.classList.contains('dashboard__item__button--return')) {
         botao.innerHTML = `Alugar`;
@@ -63,9 +68,13 @@ function alterarStatus(num) {
     formarLista();
     exibirNaTela('info-1', `<h3 class="paragraph-title">Alugados: <span class="paragraph-title__emphasis">${contarAlugados()}</span></h3>`);
     exibirNaTela('info-2', `<h3 class="paragraph-title">Em estoque: <span class="paragraph-title__emphasis">${lista.length - contarAlugados()}</span></h3>`);
+    exibirNaTela('itens', `<h3 class="newparagraph-title">Jogos Alugados:</h3>`);
+    exibirNaTela('nome-itens', `<h3 class="newparagraph-title__emphasis">${formarLista().join(', ')}</h3>`);
 }
 
 // PROGRAMA PRINCIPAL
 formarLista();
 exibirNaTela('info-1', `<h3 class="paragraph-title">Alugados: <span class="paragraph-title__emphasis">${contarAlugados()}</span></h3>`);
 exibirNaTela('info-2', `<h3 class="paragraph-title">Em estoque: <span class="paragraph-title__emphasis">${lista.length - contarAlugados()}</span></h3>`);
+exibirNaTela('itens', `<h3 class="newparagraph-title">Jogos Alugados:</h3>`);
+exibirNaTela('nome-itens', `<h3 class="newparagraph-title__emphasis">${formarLista().join(', ')}</h3>`);
