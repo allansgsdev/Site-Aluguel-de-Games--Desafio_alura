@@ -8,6 +8,8 @@
 // DECLARAÇÃO DE VARIÁVEIS
 let lista = [];
 let jogos = [];
+let game;
+let nomeJogo;
 
 // DECLARAÇÃO DE FUNÇÕES
 function exibirNaTela(id, texto) {
@@ -19,9 +21,8 @@ function formarLista() {
     lista = [];
     jogos = [];
     for (var i = 1; i <= document.querySelectorAll('a').length; i++) {
-        var game = document.getElementById(`game-${i}`);
-        var botao = game.querySelector('a');
-        var nomeJogo = game.querySelector('.dashboard__item__name');
+        game = document.getElementById(`game-${i}`);
+        nomeJogo = game.querySelector('.dashboard__item__name');
         var nomeBotao = game.querySelector('.dashboard__item__button');
 
         if (nomeBotao.textContent == 'Devolver') {
@@ -47,7 +48,8 @@ function contarAlugados() {
 }
 
 function alterarStatus(num) {
-    var game = document.getElementById(`game-${num}`);
+    game = document.getElementById(`game-${num}`);
+    nomeJogo = game.querySelector('.dashboard__item__name');
     var imagem = game.querySelector('.dashboard__item__img');
     var botao = game.querySelector('.dashboard__item__button');
 
@@ -57,12 +59,14 @@ function alterarStatus(num) {
         //imagem.classList.add('dashboard__item__img');
         botao.classList.remove('dashboard__item__button--return');
         //botao.classList.add('dashboard__item__button');
+        alert(`Você está devolvendo o jogo: ${nomeJogo.innerHTML}`);
     } else {
         botao.innerHTML = `Devolver`;
         //imagem.classList.remove('dashboard__item__img');
         imagem.classList.add('dashboard__item__img--rented');
         //botao.classList.remove('dashboard__item__button');
         botao.classList.add('dashboard__item__button--return');
+        alert(`Você está devolvendo o jogo: ${nomeJogo.innerHTML}`);
     }
 
     formarLista();
